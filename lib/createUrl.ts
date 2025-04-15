@@ -12,7 +12,7 @@ export default async function createUrl(
     console.log("creating new url");
 
     // change this when i deploy to vercel
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://your-app.com";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mp-5-sand.vercel.app/";
     const shortUrl = `${baseUrl}/${alias}`;
 
     const p = {
