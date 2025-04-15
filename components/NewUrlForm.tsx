@@ -12,7 +12,7 @@ export default function NewUrlForm({
 }){
     const [url, setUrl] = useState("");
     const [alias, setAlias] = useState("");
-    const [shortUrl, setShortUrl] = useState("");
+    // const [shortUrl, setShortUrl] = useState("");
 
     return (
         <form
@@ -20,10 +20,9 @@ export default function NewUrlForm({
       onSubmit={(e) => {
         e.preventDefault();
         createUrl(url, alias)
-          .then((p) => {
-            setShortUrl(p.shortUrl || `https://your-app.com/${alias}`);
-            append(p);
-          })
+          .then((p) => 
+            append(p)
+          )
           .catch((err) => console.error(err));
       }}
     >
@@ -54,7 +53,7 @@ export default function NewUrlForm({
           Shorten
         </Button>
       </div>
-      {shortUrl && <p>Your Shortened URL: {shortUrl}</p>}
+      
     </form>
     );
 }
