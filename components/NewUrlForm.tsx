@@ -54,6 +54,7 @@ export default function NewUrlForm({
           Shorten
         </Button>
       </div>
+      {shortUrl && <p>Your Shortened URL: {shortUrl}</p>}
     </form>
     );
 }
