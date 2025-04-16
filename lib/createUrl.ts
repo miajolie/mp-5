@@ -12,14 +12,14 @@ export default async function createUrl(
     console.log("creating new url");
 
     // change this when i deploy to vercel
-    const baseUrl = "https://mp-5-sand.vercel.app/";
-    const shortUrl = `${baseUrl}/${alias}`;
-    console.log("this is the shortUrl", shortUrl)
+    // const baseUrl = "https://mp-5-sand.vercel.app/";
+    // const shortUrl = `${baseUrl}/${alias}`;
+    // console.log("this is the shortUrl", shortUrl)
 
     const p = {
         url: url,
         alias: alias,
-        shortUrl: shortUrl,
+        // shortUrl: shortUrl,
     };
 
     const isValidUrl = (url: string) => {
