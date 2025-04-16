@@ -16,7 +16,7 @@ export default function NewUrlForm({
 
     return (
         <form
-      className="w-196 h-196 rounded-xl p-4 bg-gray-400"
+      className="space-y-4"
       onSubmit={(e) => {
         e.preventDefault();
         createUrl(url, alias)
@@ -49,7 +49,7 @@ export default function NewUrlForm({
       />
       <FormHelperText>Shorten Me?!</FormHelperText>
       <div className="w-full flex justify-center">
-        <Button type="submit" variant="contained" sx={{ width: "80px" }}>
+        <Button type="submit" variant="contained" sx={{ width: "100%" , backgroundColor: "#FF87A2" }}>
           Shorten
         </Button>
       </div>
