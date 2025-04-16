@@ -4,11 +4,7 @@ import {useState} from "react";
 import AliasPreview from "./AliasPreview";
 import NewUrl from "./NewUrlForm";
 /*necessary so that the home page doesnt deal with client side information */
-// {
-//     inputPosts,
-// }:{
-//     inputPosts: URL[];
-// } went inside ()
+
 export default function PostUrl() {
     const [post, setPost] = useState<URL| null>(null);
 
