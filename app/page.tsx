@@ -1,11 +1,9 @@
 
-//import getUrl from "@/lib/getUrl";
+
 import PostUrl from "@/components/PostUrl";
-//import NewUrlForm from "@/components/NewUrlForm";
+
 
 export default async function Home() {
-
-  //const alias = await getUrl();
 
 
   return (
