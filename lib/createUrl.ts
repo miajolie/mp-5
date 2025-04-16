@@ -12,7 +12,7 @@ export default async function createUrl(
     console.log("creating new url");
 
     // change this when i deploy to vercel
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mp-5-sand.vercel.app/";
+    const baseUrl = "https://mp-5-sand.vercel.app/";
     const shortUrl = `${baseUrl}/${alias}`;
     console.log("this is the shortUrl", shortUrl)
 
@@ -43,7 +43,7 @@ export default async function createUrl(
     if (existing) {
       throw new Error ('Alias already exists');
     }
-    const res= await aliasCollection.insertOne({...p});
+    const res = await aliasCollection.insertOne({...p});
 
     if (!res.acknowledged){
         throw new Error("DB insert failed");
