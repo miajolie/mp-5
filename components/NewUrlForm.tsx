@@ -21,28 +21,43 @@ export default function NewUrlForm({
       <>
         <form
       className="space-y-4"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         setError("");
-        createUrl(url, alias)
-          .then((p) => 
-            append(p))
-          .catch((err) => {
-            console.log('hello error:', err.message)
-            if (err.message && err.message.includes("This Url does not exist")) {
-              setError(
-                "The URL you entered appears invalid. Please include http:// or https://."
-              );
-            } else if (err.message && err.message.includes("Alias already exists")) {
-              setError(
-                "The alias you entered is already in use. Please choose a different alias."
-              );
-            } else {
-              setError(err.message || "An error occurred. Please try again.");
-            }
-            setShowGif(true);
-            setTimeout(() => setShowGif(false), 3000);
-          });
+        try {
+          const p = await createUrl(url, alias);
+          append(p);
+        }catch (err: any){
+          console.log('hello error:', err.message);
+          if (err.message && err.message.includes("This Url does not exist")) {
+            setError("The URL you entered appears invalid. Please include http:// or https://.");
+          } else if (err.message && err.message.includes("Alias already exists")) {
+            setError("The alias you entered is already in use. Please choose a different alias.");
+          } else {
+            setError(err.message || "An error occurred. Please try again.");
+          }
+          setShowGif(true);
+          setTimeout(() => setShowGif(false), 3000);
+        }
+        // createUrl(url, alias)
+        //   .then((p) => 
+        //     append(p))
+        //   .catch((err) => {
+        //     console.log('hello error:', err.message)
+        //     if (err.message && err.message.includes("This Url does not exist")) {
+        //       setError(
+        //         "The URL you entered appears invalid. Please include http:// or https://."
+        //       );
+        //     } else if (err.message && err.message.includes("Alias already exists")) {
+        //       setError(
+        //         "The alias you entered is already in use. Please choose a different alias."
+        //       );
+        //     } else {
+        //       setError(err.message || "An error occurred. Please try again.");
+        //     }
+        //     setShowGif(true);
+        //     setTimeout(() => setShowGif(false), 3000);
+        //   });
       }}
     >
       <TextField
