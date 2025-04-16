@@ -28,6 +28,7 @@ export default function NewUrlForm({
           .then((p) => 
             append(p))
           .catch((err) => {
+            console.log('hello error:', err.message)
             if (err.message && err.message.includes("This Url does not exist")) {
               setError(
                 "The URL you entered appears invalid. Please include http:// or https://."

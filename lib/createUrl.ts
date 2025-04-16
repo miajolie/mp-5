@@ -40,8 +40,9 @@ export default async function createUrl(
 
     //check if the alias exists
     const existing = await aliasCollection.findOne({ alias });
+
     if (existing) {
-      throw new Error ('Alias already exists');
+      throw new Error ("Alias already exists");
     }
     const res = await aliasCollection.insertOne({...p});
 
