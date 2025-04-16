@@ -33,7 +33,7 @@ export default async function createUrl(
     }
 
     if (!isValidUrl(url)){
-        throw new Error ("Invalid alias: This Url does not exist");
+        throw new Error ("This Url does not exist");
     }
 
     const aliasCollection = await getCollection(ALIAS_COLLECTION);
