@@ -25,25 +25,50 @@ export default function NewUrlForm({
         e.preventDefault();
         setError("");
         try {
-          const p = await createUrl(url, alias);
-          append(p);
-        }catch (err){
-          if (err instanceof Error){
-            console.log('hello error:', err.message);
-          if (err.message && err.message.includes("This Url does not exist")) {
-            setError("The URL you entered appears invalid. Please include http:// or https://.");
-          } else if (err.message && err.message.includes("Alias already exists")) {
-            setError("The alias you entered is already in use. Please choose a different alias.");
-          } else {
-            setError(err.message || "An error occurred. Please try again.");
+          const result = await createUrl(url, alias);
+        
+          if (result.error) {
+            // Now we can interpret the error string ourselves
+            if (result.error === "invalid_url") {
+              setError("The URL you entered appears invalid. Please include http:// or https://.");
+            } else if (result.error === "alias_already_exists") {
+              setError("The alias you entered is already in use. Please choose a different alias.");
+            } else if (result.error === "db_insert_failed") {
+              setError("Database error. Please try again.");
+            } else {
+              setError("An unknown error occurred.");
+            }
+            setShowGif(true);
+            setTimeout(() => setShowGif(false), 3000);
+            return;
           }
-          setShowGif(true);
-          setTimeout(() => setShowGif(false), 3000);
-          }
-          else{
-            setError("unexpected error occurred! :(");
-          }
+        
+          // No error -> proceed with success
+          append(result as URL);
+        } catch{
+          // Defensive fallback
+          setError("Unexpected error occurred! :(");
         }
+        // try {
+        //   const p = await createUrl(url, alias);
+        //   append(p);
+        // }catch (err){
+        //   if (err instanceof Error){
+        //     console.log('hello error:', err.message);
+        //     if (err.message && err.message.includes("This Url does not exist")) {
+        //       setError("The URL you entered appears invalid. Please include http:// or https://.");
+        //     } else if (err.message && err.message.includes("Alias already exists")) {
+        //       setError("The alias you entered is already in use. Please choose a different alias.");
+        //     } else {
+        //       setError(err.message || "An error occurred. Please try again.");
+        //     }
+        //     setShowGif(true);
+        //     setTimeout(() => setShowGif(false), 3000);
+        //   }
+        //   else{
+        //     setError("unexpected error occurred! :(");
+        //   }
+        // }
         // createUrl(url, alias)
         //   .then((p) => 
         //     append(p))

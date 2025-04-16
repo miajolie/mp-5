@@ -1,5 +1,5 @@
 // app/[alias]/page.tsx
-import { redirect, notFound } from "next/navigation";
+import { redirect} from "next/navigation";
 import getCollection, { ALIAS_COLLECTION } from "@/db";
 
 export default async function AliasPage({
@@ -17,12 +17,13 @@ export default async function AliasPage({
 
 
     if (!record) {
-        notFound();
+
+        return redirect("/");
     }
 
 
     redirect(record.url);
 
-
+    
   return null;
 }
