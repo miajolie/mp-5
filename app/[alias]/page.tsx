@@ -1,4 +1,3 @@
-// app/[alias]/page.tsx
 import { redirect} from "next/navigation";
 import getCollection, { ALIAS_COLLECTION } from "@/db";
 
