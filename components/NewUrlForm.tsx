@@ -27,8 +27,9 @@ export default function NewUrlForm({
         try {
           const p = await createUrl(url, alias);
           append(p);
-        }catch (err: any){
-          console.log('hello error:', err.message);
+        }catch (err){
+          if (err instanceof Error){
+            console.log('hello error:', err.message);
           if (err.message && err.message.includes("This Url does not exist")) {
             setError("The URL you entered appears invalid. Please include http:// or https://.");
           } else if (err.message && err.message.includes("Alias already exists")) {
@@ -38,6 +39,10 @@ export default function NewUrlForm({
           }
           setShowGif(true);
           setTimeout(() => setShowGif(false), 3000);
+          }
+          else{
+            setError("unexpected error occurred! :(");
+          }
         }
         // createUrl(url, alias)
         //   .then((p) => 
