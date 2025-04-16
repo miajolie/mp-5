@@ -13,7 +13,7 @@ export default async function createUrl(
 
     // change this when i deploy to vercel
     const baseUrl = "https://mp-5-iota.vercel.app/";
-    const shortUrl = `${baseUrl}/${alias}`;
+    const shortUrl = `${baseUrl}${alias}`;
     console.log("this is the shortUrl", shortUrl)
 
     const p = {
