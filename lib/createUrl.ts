@@ -12,11 +12,11 @@ export default async function createUrl(
 
       // const baseUrl = "https://mp-5-iota.vercel.app/";
       // const shortUrl = `${baseUrl}${alias}`;
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-      const shortUrl = `${baseUrl}/${alias}`;
+      // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      // const shortUrl = `${baseUrl}/${alias}`;
       // const shortUrl = `${window.location.origin}${alias}`;
-      const p = { url, alias, shortUrl };
-  
+      // const p = { url, alias, shortUrl };
+      const p = { url, alias };
       // const isValidUrl = (testUrl: string) => {
       //   const urlPattern = new RegExp(
       //     "^(https?:\\/\\/)?"+

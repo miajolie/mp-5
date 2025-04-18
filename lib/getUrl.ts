@@ -9,7 +9,7 @@ export default async function getURL(): Promise<URL[]>{
         id: p._id.toHexString(),
         url: p.url,
         alias: p.alias,
-        shortUrl: p.shortUrl,
+        // shortUrl: p.shortUrl,
     }));
     
     return posts.reverse();

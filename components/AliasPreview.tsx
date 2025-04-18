@@ -14,7 +14,7 @@ export default function AliasPreview({post}: {post:URL}){
                 <strong>Alias:</strong> {post.alias}
             </p>
             <p>
-                <strong>Short URL:</strong> {post.shortUrl}
+            <strong>Short URL:</strong> {`${window.location.origin}/${post.alias}`}
             </p>
         <Button
             variant="contained"
